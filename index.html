@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Principal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <div class="login-container">
+        <h2>Registrate</h2>
+        <div class="input-group">
+            <form id="registroForm">
+                <label>Nombre:</label>
+                <input type="text" id="nombre" required>
+                <label>Apellido</label>
+                <input type="text" id="apellido" required>
+                <label>Correo</label>
+                <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                <label>Contraseña:</label>
+                <input type="password" id="password" name="password" placeholder="********" required>
+                
+                <label>Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+            
+            <!-- Modal -->
+            <div id="modalEdad" class="modal oculto">
+                <div class="modal-contenido">
+                        <div style="display: flex; justify-content: center; align-items: center; height: 220px;">
+                            <p id="textoEdad"></p>
+                            <button id="cerrarModal">Cerrar</button>
+                        </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/utileria.js"></script>
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const codigo = document.getElementById('codigo').value;
+            const fecha = document.getElementById('fechaNacimiento').value;
+
+            if (!soloLetras(nombre)) return alert("El nombre solo debe contener letras.");
+            if (!validarLongitud(codigo, 5)) return alert("Código no válido (máx 5 dígitos).");
+
+            const edad = calcularEdad(fecha);
+            const mayor = esMayorDeEdad(fecha) ? "Es mayor de edad" : "Es menor de edad";
+
+            document.getElementById('textoEdad').innerText = `Edad calculada: ${edad} años (${mayor}).`;
+            document.getElementById('modalEdad').classList.remove('oculto');
+        });
+
+        document.getElementById('cerrarModal').addEventListener('click', () => {
+            document.getElementById('modalEdad').classList.add('oculto');
+        });
+    </script>
+</body>
+</html>

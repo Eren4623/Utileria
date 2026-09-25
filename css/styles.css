@@ -1,0 +1,106 @@
+/* Reseteo básico de márgenes */
+* {
+    color: #007bff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+
+}
+
+/* Centrar el formulario en la pantalla */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #020202;
+}
+#registroForm{
+    width: 100%;
+    max-width: 400%;
+    background: #7e84fc;
+    padding: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgb(62, 62, 62);
+}
+#modalEdad{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: #ffffff;
+}
+/* Contenedor principal de la tarjeta de login */
+.login-container {
+    width: 100%;
+    max-width: 500px;
+    background: #7e84fc;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(252, 251, 251, 0.941);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fafafa;
+}
+
+/* Estilos para cada grupo de input */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #030303;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Efecto cuando se hace clic en el input */
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botón de envío */
+.btn-submit {
+    width: 100%;
+    padding: 11px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Efecto al pasar el cursor por el botón */
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Enlace inferior */
+.footer-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.footer-link a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-link a:hover {
+    text-decoration: underline;
+}

@@ -1,63 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario Principal</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Estilos y Scripts Compartidos -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="validaciones.js" defer></script>
 </head>
 <body>
-    
-    <div class="login-container">
-        <h2>Registrate</h2>
-        <div class="input-group">
-            <form id="registroForm">
-                <label>Nombre:</label>
-                <input type="text" id="nombre" required>
-                <label>Apellido</label>
-                <input type="text" id="apellido" required>
-                <label>Correo</label>
-                <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
-                <label>Contraseña:</label>
-                <input type="password" id="password" name="password" placeholder="********" required>
-                
-                <label>Fecha de Nacimiento:</label>
-                <input type="date" id="fechaNacimiento" required>
 
-                <button type="submit">Enviar</button>
-            </form>
-            
-            <!-- Modal -->
-            <div id="modalEdad" class="modal oculto">
-                <div class="modal-contenido">
-                        <div style="display: flex; justify-content: center; align-items: center; height: 220px;">
-                            <p id="textoEdad"></p>
-                            <button id="cerrarModal">Cerrar</button>
-                        </div>    
-                </div>
-            </div>
-        </div>
+  <div class="card-container">
+    <div class="card-header">
+      <h2>Crear Cuenta</h2>
+      <p>Llena el formulario con tus datos personales</p>
     </div>
-    <script src="js/utileria.js"></script>
-    <script>
-        document.getElementById('registroForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const codigo = document.getElementById('codigo').value;
-            const fecha = document.getElementById('fechaNacimiento').value;
 
-            if (!soloLetras(nombre)) return alert("El nombre solo debe contener letras.");
-            if (!validarLongitud(codigo, 5)) return alert("Código no válido (máx 5 dígitos).");
+    <!-- Caja de notificaciones -->
+    <div id="alerta-box" class="alerta oculta"></div>
 
-            const edad = calcularEdad(fecha);
-            const mayor = esMayorDeEdad(fecha) ? "Es mayor de edad" : "Es menor de edad";
+    <form id="registro-form" novalidate>
+      
+      <!-- Campos: Nombre y Apellido -->
+      <div class="row-dos-columnas">
+        <div class="input-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Ej. Carlos" autocomplete="given-name">
+          <span class="error-msg" id="error-nombre"></span>
+        </div>
 
-            document.getElementById('textoEdad').innerText = `Edad calculada: ${edad} años (${mayor}).`;
-            document.getElementById('modalEdad').classList.remove('oculto');
-        });
+        <div class="input-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" placeholder="Ej. Morales" autocomplete="family-name">
+          <span class="error-msg" id="error-apellido"></span>
+        </div>
+      </div>
 
-        document.getElementById('cerrarModal').addEventListener('click', () => {
-            document.getElementById('modalEdad').classList.add('oculto');
-        });
-    </script>
+      <!-- Campo: Correo Electrónico -->
+      <div class="input-group">
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="correo" placeholder="correo@ejemplo.com" autocomplete="email">
+        <span class="error-msg" id="error-correo"></span>
+      </div>
+
+      <!-- Campo: Fecha de Nacimiento -->
+      <div class="input-group">
+        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fecha-nacimiento">
+        <span class="error-msg" id="error-fecha"></span>
+      </div>
+
+      <!-- Campo: Contraseña con checklist -->
+      <div class="input-group">
+        <label for="password">Contraseña</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="••••••••" autocomplete="new-password">
+          <button type="button" class="btn-toggle-eye" id="toggle-password" title="Mostrar/Ocultar contraseña">👁️</button>
+        </div>
+        <span class="error-msg" id="error-password"></span>
+
+        <!-- Requisitos visuales -->
+        <div class="requisitos-lista">
+          <p class="req-titulo">Requisitos obligatorios:</p>
+          <ul>
+            <li id="req-min8">• Mínimo 8 caracteres</li>
+            <li id="req-mayus">• Una letra mayúscula</li>
+            <li id="req-minus">• Una letra minúscula</li>
+            <li id="req-num">• Al menos un número</li>
+            <li id="req-especial">• Un carácter especial (!@#$%^&*)</li>
+          </ul>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Registrarse</button>
+    </form>
+
+    <div class="card-footer">
+      <span>¿Ya tienes una cuenta?</span>
+      <a href="login.html" class="link-button">Inicia sesión</a>
+    </div>
+  </div>
+
 </body>
 </html>

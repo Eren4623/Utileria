@@ -13,11 +13,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0f172a;
-  background-image: radial-gradient(at 0% 0%, #1e1b4b 0px, transparent 50%),
+  background-color: #182f64;
+  background-image: radial-gradient(at 0% 0%, #1a1386 0px, transparent 50%),
                     radial-gradient(at 100% 100%, #1e293b 0px, transparent 50%);
   padding: 1.5rem;
-  color: #f8fafc;
+  color: #186dc2;
 }
 
 /* ==========================================================================
